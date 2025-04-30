@@ -15,7 +15,7 @@ class HTMLnode():
     def props_to_html(self):
         html = ""
 
-        if not self.props:
+        if self.props:
             for key in self.props:
                 html += f"{key}: {self.props[key]}"
             
