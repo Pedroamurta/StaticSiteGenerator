@@ -16,3 +16,27 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode("p", "")
         with self.assertRaises(ValueError):
             node.to_html()
+
+    def test_leafnode_self_closing_img_with_props(self):
+        node = LeafNode("img", "", props={"src": "cat.png", "alt": "A cat"})
+        self.assertEqual(node.to_html(), '<img src="cat.png" alt="A cat" />')
+
+
+    def test_leafnode_self_closing_br_no_props(self):
+        node = LeafNode("br", "")
+        self.assertEqual(node.to_html(), "<br />")
+
+
+    def test_leafnode_normal_tag(self):
+        node = LeafNode("p", "Hello, world!")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
+
+    def test_leafnode_self_closing_hr_with_props(self):
+        node = LeafNode("hr", "", props={"class": "line"})
+        self.assertEqual(node.to_html(), '<hr class="line" />')
+
+
+    def test_leafnode_self_closing_ignores_value(self):
+        node = LeafNode("img", "ignored", props={"src": "x.png"})
+        self.assertEqual(node.to_html(), '<img src="x.png" />')
