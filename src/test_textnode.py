@@ -23,6 +23,16 @@ class TestTextNode(unittest.TestCase):
         node = TextNode("This is a text node", TextType.ITALIC)
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertNotEqual(node, node2)
+    
+    def test_df_url(self):
+        node1 = TextNode("text", TextType.LINK, url="http://a.com")
+        node2 = TextNode("text", TextType.LINK, url="http://b.com")
+        self.assertNotEqual(node1, node2)
+
+    def test_repr(self):
+        node = TextNode("Click here", TextType.LINK, "http://example.com")
+        self.assertEqual(repr(node), "TextNode(Click here, link, http://example.com)")
+
 
 
 
