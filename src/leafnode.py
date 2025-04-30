@@ -11,10 +11,6 @@ class LeafNode(HTMLnode):
         if not self.tag:
             return self.value
 
-        props_to_add = ""
-        if self.props:
-            props_to_add = " " + " ".join(f'{key}="{value}"' for key, value in self.props.items())
-
-        return f"<{self.tag}{props_to_add}>{self.value}</{self.tag}>"
+        return f"<{self.tag}{self.format_props_for_tag()}>{self.value}</{self.tag}>"
 
         

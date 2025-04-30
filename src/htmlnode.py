@@ -11,6 +11,13 @@ class HTMLnode():
 
     def to_html(self):
         raise NotImplementedError
+    
+    def format_props_for_tag(self):
+        formated_props = ""
+        if self.props:
+            formated_props = " " + " ".join(f'{key}="{value}"' for key, value in self.props.items())
+        
+        return formated_props
 
     def props_to_html(self):
         html = ""
