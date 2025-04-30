@@ -5,10 +5,10 @@ class LeafNode(HTMLnode):
         super().__init__(tag, value, children=None, props=props)
     
     def to_html(self):
-        if self.value is None:
-            raise ValueError("All leaf nodes must have value")
+        if not self.value:
+            raise ValueError("LeafNode Object must have value attribute")
         
-        if self.tag is None:
+        if not self.tag:
             return self.value
 
         props_to_add = ""

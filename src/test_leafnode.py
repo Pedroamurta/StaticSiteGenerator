@@ -11,3 +11,8 @@ class TestLeafNode(unittest.TestCase):
     def test_leaf_to_html_with_props(self):
         node = LeafNode("a", "Click!", {"href": "https://example.com", "target": "_blank"})
         self.assertEqual(node.to_html(), '<a href="https://example.com" target="_blank">Click!</a>')
+    
+    def test_leaf_tag_missing_error(self):
+        node = LeafNode("p", "")
+        with self.assertRaises(ValueError):
+            node.to_html()
