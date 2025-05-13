@@ -2,14 +2,14 @@ from nodes.textnode import TextNode, TextType
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     all_new_nodes = []
-    for node in old_nodes:
+    for old_node in old_nodes:
         new_node = []
 
-        if  node.text_type != TextType.TEXT or delimiter not in node.text:
-            all_new_nodes.append(node)
+        if  old_node.text_type != TextType.TEXT or delimiter not in old_node.text:
+            all_new_nodes.append(old_node)
             continue
         
-        parts = node.text.split(delimiter)
+        parts = old_node.text.split(delimiter)
 
         if len(parts) % 2 == 0:
             raise Exception("Invalid markdown syntax")
